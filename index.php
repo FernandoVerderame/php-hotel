@@ -2,6 +2,18 @@
 
 require __DIR__ . '/partials/data.php';
 
+if (isset($_GET['parking']) && !empty($_GET['parking'])) {
+    $filter_parking = [];
+
+    foreach ($hotels as $hotel) {
+        $park = $hotel['parking'] ? 'si' : 'no';
+        if ($park === $_GET['parking']) {
+            $filter_parking[] = $hotel;
+        }
+    }
+    $hotels = $filter_parking;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +34,17 @@ require __DIR__ . '/partials/data.php';
 <body>
     <section id="hotels-table">
         <div class="container">
-            <h1 class="my-5">Hotels</h1>
+            <header class="d-flex justify-content-between align-items-center">
+                <h1 class="my-5">Hotels</h1>
+                <form action="" method="GET">
+                    <select name="parking" id="parking">
+                        <option value="">Scegli</option>
+                        <option value="si">CON Parcheggio</option>
+                        <option value="no">SENZA Parcheggio</option>
+                    </select>
+                    <button>Filtra</button>
+                </form>
+            </header>
             <table class="table table-striped border border-black">
                 <thead class="text-center">
                     <tr>
