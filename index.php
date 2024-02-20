@@ -14,6 +14,11 @@ if (isset($_GET['parking']) && !empty($_GET['parking'])) {
     $hotels = $filter_parking;
 }
 
+if (isset($_GET['vote']) && !empty($_GET['vote'])) {
+    $vote = $_GET['vote'];
+    $hotels = array_filter($hotels, fn($value) => $value['vote'] >= $vote);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -36,11 +41,19 @@ if (isset($_GET['parking']) && !empty($_GET['parking'])) {
         <div class="container">
             <header class="d-flex justify-content-between align-items-center">
                 <h1 class="my-5">Hotels</h1>
-                <form action="" method="GET">
+                <form action="index.php" method="GET">
                     <select name="parking" id="parking">
-                        <option value="">Scegli</option>
+                        <option value="">Scegli Parcheggio</option>
                         <option value="si">CON Parcheggio</option>
                         <option value="no">SENZA Parcheggio</option>
+                    </select>
+                    <select name="vote" id="vote">
+                        <option value="">Scegli Votazione</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                     <button>Filtra</button>
                 </form>
