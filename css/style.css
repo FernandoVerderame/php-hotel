@@ -6,10 +6,19 @@ thead {
     text-transform: uppercase;
 }
 
+select {
+    height: 30px;
+    border-radius: 10px;
+}
+
 .fa-circle-check {
     color: green;
 }
 
 .fa-circle-xmark {
     color: red;
+}
+
+button {
+    border-radius: 10px;
 }
