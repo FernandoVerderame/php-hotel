@@ -5,3 +5,11 @@ body {
 thead {
     text-transform: uppercase;
 }
+
+.fa-circle-check {
+    color: green;
+}
+
+.fa-circle-xmark {
+    color: red;
+}

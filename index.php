@@ -43,7 +43,8 @@ require __DIR__ . '/partials/data.php';
                                 <?= $hotel['description'] ?>
                             </td>
                             <td>
-                                <?= $hotel['parking'] ?>
+                                <?= $parking_icon = $hotel['parking'] ? '<i class="fa-solid fa-circle-check"></i>' : '<i class="fa-solid fa-circle-xmark"></i>';
+                                ?>
                             </td>
                             <td>
                                 <?= $hotel['vote'] ?>
