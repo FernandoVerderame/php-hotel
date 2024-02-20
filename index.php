@@ -41,56 +41,15 @@ if (isset($_GET['vote']) && !empty($_GET['vote'])) {
         <div class="container">
             <header class="d-flex justify-content-between align-items-center">
                 <h1 class="my-5">Hotels</h1>
-                <form action="index.php" method="GET">
-                    <select name="parking" id="parking">
-                        <option value="">Scegli Parcheggio</option>
-                        <option value="si">CON Parcheggio</option>
-                        <option value="no">SENZA Parcheggio</option>
-                    </select>
-                    <select name="vote" id="vote">
-                        <option value="">Scegli Votazione</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <button>Filtra</button>
-                </form>
+
+                <?php include __DIR__ . '/template/filter.php' ?>
+
             </header>
-            <table class="table table-striped border border-black">
-                <thead class="text-center">
-                    <tr>
-                        <th class="text-start" scope="col">Nome</th>
-                        <th scope="col">Descrizione</th>
-                        <th scope="col">Parcheggio</th>
-                        <th scope="col">Voto</th>
-                        <th scope="col">Distanza dal centro</th>
-                    </tr>
-                </thead>
-                <tbody class="text-center">
-                    <?php foreach ($hotels as $hotel): ?>
-                        <tr>
-                            <td class="text-start">
-                                <?= $hotel['name'] ?>
-                            </td>
-                            <td>
-                                <?= $hotel['description'] ?>
-                            </td>
-                            <td>
-                                <?= $parking_icon = $hotel['parking'] ? '<i class="fa-solid fa-circle-check"></i>' : '<i class="fa-solid fa-circle-xmark"></i>';
-                                ?>
-                            </td>
-                            <td>
-                                <?= $hotel['vote'] ?>
-                            </td>
-                            <td>
-                                <?= $hotel['distance_to_center'] ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+            <main>
+
+                <?php include __DIR__ . '/template/table.php' ?>
+
+            </main>
         </div>
     </section>
 </body>
