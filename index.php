@@ -2,20 +2,22 @@
 
 require __DIR__ . '/partials/data.php';
 
-if (isset($_GET['parking']) && !empty($_GET['parking'])) {
+$data = $_GET;
+
+if (isset($data['parking']) && !empty($data['parking'])) {
     $filter_parking = [];
 
     foreach ($hotels as $hotel) {
         $park = $hotel['parking'] ? 'si' : 'no';
-        if ($park === $_GET['parking']) {
+        if ($park === $data['parking']) {
             $filter_parking[] = $hotel;
         }
     }
     $hotels = $filter_parking;
 }
 
-if (isset($_GET['vote']) && !empty($_GET['vote'])) {
-    $vote = $_GET['vote'];
+if (isset($data['vote']) && !empty($data['vote'])) {
+    $vote = $data['vote'];
     $hotels = array_filter($hotels, fn($value) => $value['vote'] >= $vote);
 }
 
