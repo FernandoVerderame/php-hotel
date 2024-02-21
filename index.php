@@ -22,7 +22,7 @@ if (isset($data['parking']) && !empty($data['parking'])) {
 // Vote filter
 if (isset($data['vote']) && !empty($data['vote'])) {
     $vote = $data['vote'];
-    $hotels = array_filter($hotels, fn($value) => $value['vote'] >= $vote);
+    $hotels = array_filter($hotels, fn($hotel) => $hotel['vote'] >= $vote);
 }
 
 ?>
